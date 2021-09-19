@@ -1,0 +1,22 @@
+
+footer {
+  position: fixed;
+  font-size: 2rem;
+  bottom: 0;
+  width: 100%;
+  height: 130px;
+  line-height: 60px;
+  background-color: #272424;
+  color: #f1f1f1;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid;
+
+    &:hover {
+      border-bottom: 1px transparent;
+    }
+  }
+}

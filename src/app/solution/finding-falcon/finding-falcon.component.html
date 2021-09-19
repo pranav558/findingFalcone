@@ -1,0 +1,36 @@
+<div id="container">
+  <div class="error" *ngIf="errorMessage != ''">{{ errorMessage }}</div>
+  <img src="../../../assets/img/planets.png">
+  <h1 *ngIf="calculatedTime > 0">Time to travel: {{calculatedTime}} hours</h1>
+  <div class="cards">
+    <section class="card" *ngFor="let _ of totalVehicles; let i = index ">
+      <div class="card-content">
+        <p class="title">Destination {{ i + 1 }}</p>
+        <input [attr.list]="'planets' + ( i + 1 )" [attr.id]="'planet' + ( i + 1 )"
+          name="browser" type="search" placeholder="Select Planet"
+          (change)="destinationChange($event, i + 1)"
+        >
+        <datalist [attr.id]="'planets' + ( i + 1 )">
+          <option *ngFor="let planet of planets" value="{{planet.name}}">{{planet.distance}}-{{units}}</option>
+        </datalist>
+        <div class="control-group">
+          <label class="control control-radio" *ngFor="let vehicle of vehicles">
+            <span>{{vehicle.name}} ({{vehicle.total_no}})</span>
+            <span class="details">Speed: {{vehicle.speed}} {{units}}/hour</span>
+            <span class="details">Max distance : {{vehicle.max_distance}} {{units}}</span>
+            <input type="radio" [attr.name]="'radio' + ( i + 1 )"
+              [attr.data-distance]="vehicle.max_distance"
+              [attr.data-totalUnits]="vehicle.total_no"
+              (change)="vehicleChange(vehicle, i + 1)"
+              [disabled] = "vehicle.total_no == 0"
+            />
+            <div class="control_indicator"></div>
+          </label>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="flex-center mar-bot-130">
+  <button *ngIf="selectedVehicles.size == 4" (click)="sendDataToResultPage()"> Let's Roll</button>
+</div>

@@ -1,0 +1,38 @@
+$light: #ffffff;
+$dark: lighten(#000000, 8%);
+$glow: #0ba9ca;
+$fs: 7rem;
+
+.glow {
+  margin-top: 100px;
+  text-align: center;
+  margin-bottom: 150px;
+  span {
+    color: $light;
+    text-shadow:
+      0 0 2px $light,
+      0 0 10px $light,
+      0 0 20px $glow,
+      0 0 30px $glow,
+      0 0 40px $glow,
+      0 0 50px $glow;
+    animation: blink 1.5s infinite alternate;
+  }
+  .major {
+    display: block;
+    font-size: $fs;
+  }
+}
+
+@keyframes blink {
+  0%   {}
+  100% {
+    text-shadow:
+      0 0 2px $light,
+      0 0 10px $light,
+      0 0 20px $light,
+      0 0 40px $glow,
+      0 0 70px $glow,
+      0 0 80px $glow;
+  }
+}
